@@ -57,9 +57,9 @@ namespace BeehiveSimulator.Model
             else
             {
                 TotalNectar += NectarAddedPerGrowthCycle;
-                if (TotalNectar > MaxNectar)
+                if (TotalNectar > MaximumNectar)
                 {
-                    TotalNectar = MaxNectar;
+                    TotalNectar = MaximumNectar;
                 }
             }
         }
