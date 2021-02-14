@@ -10,7 +10,7 @@ namespace BeehiveSimulator.Model
         private const int MinimumLifeSpan = 15000;
         private const int MaximumLifeSpan = 30000;
         private const double InitialNectar = 1.5;
-        private const double MaxNectar = 5.0;
+        private const double MaximumNectar = 5.0;
         private const double NectarAddedPerGrowthCycle = 0.01;
         private const double NectarGatheredPerGrowthCycle = 0.3;
 
