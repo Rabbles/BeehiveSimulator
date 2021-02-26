@@ -14,6 +14,9 @@ namespace BeehiveSimulator.Model
         private const int MoveRate = 3;
         private const int CareerSpan = 1000;
 
+        private Hive _hive;
+        private World _world;
+
         public int Age { get; private set; }
         public bool InsideHive { get; private set; }
         public double NectarCollected { get; private set; }
@@ -21,7 +24,7 @@ namespace BeehiveSimulator.Model
 
         public BeeState CurrentState { get; private set; }
 
-        public Bee(int id, Point location)  
+        public Bee(int id, Point location, Hive hive, World world)  
         {
             _location = location;
             Age = 0;
@@ -30,6 +33,8 @@ namespace BeehiveSimulator.Model
             destinationFlower = null;
             NectarCollected = 0;
             CurrentState = BeeState.Idle;
+            _hive = hive;
+            _world = world;
         }
 
         public void Go(Random random)

@@ -16,10 +16,12 @@ namespace BeehiveSimulator.Model
         private int _beeCount;
         private Dictionary<string, Point> _locations;
         public double Honey { get; private set; }
+        private World _world;
 
-        public Hive()
+        public Hive(World world)
         {
             Honey = IntiialHoney;
+            _world = world;
             InitialiseLocations();
 
             var random = new Random();
@@ -27,22 +29,63 @@ namespace BeehiveSimulator.Model
             for(var i = 0; i < InitialBees; i++)
             {
                 AddBee(random);
-            }
+            }     
         }
 
 
         public void InitialiseLocations() 
         {
-            _locations = new Dictionary<string, Point> { { "Entrance", new Point(600, 100)}, { "Nursery", new Point(95, 174)}, { "Honey Factory", new Point(157, 98)}, { "Exit", new Point(194, 213)}};
+            _locations = new Dictionary<string, Point> {{ "Entrance", new Point(600, 100)}, 
+                                                        { "Nursery", new Point(95, 174)}, 
+                                                        { "Honey Factory", new Point(157, 98)}, 
+                                                        { "Exit", new Point(194, 213)}};
         }
 
-        public bool AddHoney(double nectar) { return false; }
+        public bool AddHoney(double nectar) 
+        {
+            var honeyToAdd = nectar * NectarToHoneyRatio;
 
-        public bool ConsumeHoney(double amount) { return false; }
+            if(honeyToAdd + Honey > MaximumHoneyStorageOfHive)
+            {
+                return false;
+            }
 
-        public void AddBee(Random random) { }
+            Honey += honeyToAdd;
 
-        public void Go(Random random) { }
+            return true;
+        }
+
+        public bool ConsumeHoney(double amount) 
+        {
+            if (amount > Honey)
+            {
+                return false;
+            }
+            else
+            {
+                Honey -= amount;
+                return true;
+            }
+
+        }
+
+        public void AddBee(Random random) 
+        {
+            _beeCount++;
+            var random1 = random.Next(100) - 50;
+            var random2 = random.Next(100) - 50;
+            var startPoint = new Point(_locations["Nursery"].X + random1,
+                                       _locations["Nursery"].Y + random2);
+            var newBee = new Bee(_beeCount, startPoint, this, _world);
+        }
+
+        public void Go(Random random) 
+        {
+            if (Honey > MinimumHoneyToProduceBees && random.Next(10) == 1)
+            {
+                AddBee(random);
+            }
+        }
 
         public Point GetLocation(string location) 
         {
