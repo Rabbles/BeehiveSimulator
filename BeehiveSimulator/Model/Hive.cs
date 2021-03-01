@@ -77,13 +77,15 @@ namespace BeehiveSimulator.Model
             var startPoint = new Point(_locations["Nursery"].X + random1,
                                        _locations["Nursery"].Y + random2);
             var newBee = new Bee(_beeCount, startPoint, this, _world);
+            _world.Bees.Add(newBee);
         }
 
         public void Go(Random random) 
         {
-            if (Honey > MinimumHoneyToProduceBees && random.Next(10) == 1)
+            if (_world.Bees.Count < MaximumBees && Honey > MinimumHoneyToProduceBees && random.Next(10) == 1)
             {
                 AddBee(random);
+
             }
         }
 

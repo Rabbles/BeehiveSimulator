@@ -7,6 +7,18 @@ namespace BeeSimulatorTest
     [TestFixture]
     public class BeeTest
     {
-        private Bee bee = new Bee(1, new Point(12, 12));
+        [SetUp]
+        private void Setup()
+        {
+            //var bee = new Bee(1, new Point(50, 50), new);
+        }
+
+        private void 
+
+
+        [TearDown]
+        private void TearDown()
+        { 
+        }
     }
 }
