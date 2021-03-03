@@ -1,7 +1,7 @@
 ﻿
 namespace BeehiveSimulator
 {
-    partial class Form1
+    partial class Dashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,8 @@ namespace BeehiveSimulator
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.StartButton = new System.Windows.Forms.ToolStripButton();
             this.ResetButton = new System.Windows.Forms.ToolStripButton();
@@ -46,8 +47,9 @@ namespace BeehiveSimulator
             this.LblFlowers = new System.Windows.Forms.Label();
             this.LblHoneyInHive = new System.Windows.Forms.Label();
             this.LblNectarInFlowers = new System.Windows.Forms.Label();
-            this.LabelFramesRun2 = new System.Windows.Forms.Label();
-            this.LabelFrameRate2 = new System.Windows.Forms.Label();
+            this.LblFramesRun2 = new System.Windows.Forms.Label();
+            this.LblFrameRate2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -113,8 +115,8 @@ namespace BeehiveSimulator
             this.tableLayoutPanel1.Controls.Add(this.LblFlowers, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.LblHoneyInHive, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.LblNectarInFlowers, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.LabelFramesRun2, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.LabelFrameRate2, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.LblFramesRun2, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.LblFrameRate2, 1, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 7;
@@ -218,23 +220,23 @@ namespace BeehiveSimulator
             this.LblNectarInFlowers.TabIndex = 9;
             this.LblNectarInFlowers.Text = "Nectar in Flowers";
             // 
-            // LabelFramesRun2
+            // LblFramesRun2
             // 
-            this.LabelFramesRun2.AutoSize = true;
-            this.LabelFramesRun2.Location = new System.Drawing.Point(189, 80);
-            this.LabelFramesRun2.Name = "LabelFramesRun2";
-            this.LabelFramesRun2.Size = new System.Drawing.Size(64, 13);
-            this.LabelFramesRun2.TabIndex = 10;
-            this.LabelFramesRun2.Text = "Frames Run";
+            this.LblFramesRun2.AutoSize = true;
+            this.LblFramesRun2.Location = new System.Drawing.Point(189, 80);
+            this.LblFramesRun2.Name = "LblFramesRun2";
+            this.LblFramesRun2.Size = new System.Drawing.Size(64, 13);
+            this.LblFramesRun2.TabIndex = 10;
+            this.LblFramesRun2.Text = "Frames Run";
             // 
-            // LabelFrameRate2
+            // LblFrameRate2
             // 
-            this.LabelFrameRate2.AutoSize = true;
-            this.LabelFrameRate2.Location = new System.Drawing.Point(189, 100);
-            this.LabelFrameRate2.Name = "LabelFrameRate2";
-            this.LabelFrameRate2.Size = new System.Drawing.Size(62, 13);
-            this.LabelFrameRate2.TabIndex = 11;
-            this.LabelFrameRate2.Text = "Frame Rate";
+            this.LblFrameRate2.AutoSize = true;
+            this.LblFrameRate2.Location = new System.Drawing.Point(189, 100);
+            this.LblFrameRate2.Name = "LblFrameRate2";
+            this.LblFrameRate2.Size = new System.Drawing.Size(62, 13);
+            this.LblFrameRate2.TabIndex = 11;
+            this.LblFrameRate2.Text = "Frame Rate";
             // 
             // Form1
             // 
@@ -247,7 +249,7 @@ namespace BeehiveSimulator
             this.MaximumSize = new System.Drawing.Size(390, 243);
             this.MinimumSize = new System.Drawing.Size(390, 243);
             this.Name = "Form1";
-            this.Text = "Beehove Simulator";
+            this.Text = "Beehive Simulator";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -277,8 +279,9 @@ namespace BeehiveSimulator
         private System.Windows.Forms.Label LblFlowers;
         private System.Windows.Forms.Label LblHoneyInHive;
         private System.Windows.Forms.Label LblNectarInFlowers;
-        private System.Windows.Forms.Label LabelFramesRun2;
-        private System.Windows.Forms.Label LabelFrameRate2;
+        private System.Windows.Forms.Label LblFramesRun2;
+        private System.Windows.Forms.Label LblFrameRate2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

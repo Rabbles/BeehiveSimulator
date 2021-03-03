@@ -16,7 +16,7 @@ namespace BeehiveSimulator
         private const int FieldMaxX = 690;
         private const int FieldMaxY = 290;
 
-        public Hive _hive;
+        public Hive Hive;
         public List<Bee> Bees;
         public List<Flower> Flowers;
 
@@ -24,7 +24,7 @@ namespace BeehiveSimulator
         {
             Bees = new List<Bee>();
             Flowers = new List<Flower>();
-            _hive = new Hive(this);
+            Hive = new Hive(this);
             var random = new Random();
 
             for(var i = 0; i < 10; i++)
@@ -35,7 +35,7 @@ namespace BeehiveSimulator
 
         public void Go(Random random)
         {
-            _hive.Go(random);
+            Hive.Go(random);
 
             for (int i = Bees.Count - 1; i >= 0; i--)
             {
