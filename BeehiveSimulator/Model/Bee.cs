@@ -7,7 +7,7 @@ namespace BeehiveSimulator.Model
     public class Bee
     {
         private Point _location;
-        private int ID;
+        private readonly int ID;
         private Flower destinationFlower;
 
         private const double HoneyConsumed = 0.5;
@@ -15,8 +15,8 @@ namespace BeehiveSimulator.Model
         private const int MoveRate = 3;
         private const int CareerSpan = 1000;
 
-        private Hive _hive;
-        private World _world;
+        private readonly Hive _hive;
+        private readonly World _world;
 
         public int Age { get; private set; }
         public bool InsideHive { get; private set; }
@@ -96,24 +96,41 @@ namespace BeehiveSimulator.Model
                     break;
 
                 case BeeState.MakingHoney:
-                    
-                    if(NectarCollected > 0.5)
+
+                    if (NectarCollected > 0.5)
                     {
                         NectarCollected = 0;
                         CurrentState = BeeState.Idle;
                     }
-
+                    else
+                    {
+                        if (_hive.AddHoney(0.5))
+                        {
+                            NectarCollected -= 0.5;
+                        }
+                        else
+                        {
+                            NectarCollected = 0;
+                        }
+                    }
                     break;
 
                 case BeeState.ReturningToHive:
 
                     if(!InsideHive)
                     {
-                        // move towards hive
+                        if(MoveTowardsLocation(_hive.GetLocation(Resources.Entrance)))
+                        {
+                            InsideHive = true;
+                            _location = _hive.GetLocation(Resources.Exit);
+                        }
                     }
                     else
                     {
-                        //todo
+                        if(MoveTowardsLocation(_hive.GetLocation(Resources.HoneyFactory)))
+                        {
+                            CurrentState = BeeState.MakingHoney;
+                        }
                     }
                     break;
 
@@ -152,8 +169,6 @@ namespace BeehiveSimulator.Model
             }
 
             return false;
-
-        }
-        
+        } 
     }
 }

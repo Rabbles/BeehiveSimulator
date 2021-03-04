@@ -123,8 +123,14 @@
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="HoneyFactory" xml:space="preserve">
+    <value>Honey Factory</value>
+  </data>
   <data name="NotApplicable" xml:space="preserve">
     <value>N/A</value>
+  </data>
+  <data name="Nursery" xml:space="preserve">
+    <value>Nursery</value>
   </data>
   <data name="PauseSimulation" xml:space="preserve">
     <value>Pause Simulation</value>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeehiveSimulator.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 
@@ -14,9 +15,9 @@ namespace BeehiveSimulator.Model
         private const double MinimumHoneyToProduceBees = 4;
 
         private int _beeCount;
+        private World _world;
         private Dictionary<string, Point> _locations;
         public double Honey { get; private set; }
-        private World _world;
 
         public Hive(World world)
         {
@@ -32,13 +33,12 @@ namespace BeehiveSimulator.Model
             }     
         }
 
-
         public void InitialiseLocations() 
         {
-            _locations = new Dictionary<string, Point> {{ "Entrance", new Point(600, 100)}, 
-                                                        { "Nursery", new Point(95, 174)}, 
-                                                        { "Honey Factory", new Point(157, 98)}, 
-                                                        { "Exit", new Point(194, 213)}};
+            _locations = new Dictionary<string, Point> {{ Resources.Entrance, new Point(600, 100)}, 
+                                                        { Resources.Nursery, new Point(95, 174)}, 
+                                                        { Resources.HoneyFactory, new Point(157, 98)}, 
+                                                        { Resources.Exit, new Point(194, 213)}};
         }
 
         public bool AddHoney(double nectar) 
@@ -51,7 +51,6 @@ namespace BeehiveSimulator.Model
             }
 
             Honey += honeyToAdd;
-
             return true;
         }
 
@@ -66,7 +65,6 @@ namespace BeehiveSimulator.Model
                 Honey -= amount;
                 return true;
             }
-
         }
 
         public void AddBee(Random random) 
@@ -74,8 +72,8 @@ namespace BeehiveSimulator.Model
             _beeCount++;
             var random1 = random.Next(100) - 50;
             var random2 = random.Next(100) - 50;
-            var startPoint = new Point(_locations["Nursery"].X + random1,
-                                       _locations["Nursery"].Y + random2);
+            var startPoint = new Point(_locations[Resources.Nursery].X + random1,
+                                       _locations[Resources.Nursery].Y + random2);
             var newBee = new Bee(_beeCount, startPoint, this, _world);
             _world.Bees.Add(newBee);
         }
@@ -85,7 +83,6 @@ namespace BeehiveSimulator.Model
             if (_world.Bees.Count < MaximumBees && Honey > MinimumHoneyToProduceBees && random.Next(10) == 1)
             {
                 AddBee(random);
-
             }
         }
 

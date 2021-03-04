@@ -79,11 +79,29 @@ namespace BeehiveSimulator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Honey Factory.
+        /// </summary>
+        internal static string HoneyFactory {
+            get {
+                return ResourceManager.GetString("HoneyFactory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to N/A.
         /// </summary>
         internal static string NotApplicable {
             get {
                 return ResourceManager.GetString("NotApplicable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nursery.
+        /// </summary>
+        internal static string Nursery {
+            get {
+                return ResourceManager.GetString("Nursery", resourceCulture);
             }
         }
         
