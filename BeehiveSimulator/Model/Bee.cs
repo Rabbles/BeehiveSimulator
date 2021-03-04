@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeehiveSimulator.Properties;
+using System;
 using System.Drawing;
 
 namespace BeehiveSimulator.Model
@@ -48,9 +49,36 @@ namespace BeehiveSimulator.Model
                     {
                         CurrentState = BeeState.Retired;
                     }
+                    else if(_world.Flowers.Count > 0 && _hive.ConsumeHoney(HoneyConsumed))
+                    {    
+                        var flower =_world.Flowers[random.Next(_world.Flowers.Count)];
+
+                        if(flower.TotalNectar >= MinimumFlowerNectar && flower.Alive)
+                        {
+                            destinationFlower = flower;
+                            CurrentState = BeeState.FlyingToFlower;
+                        }
+                    }
                     break;
 
                 case BeeState.FlyingToFlower:
+                    if(!_world.Flowers.Contains(destinationFlower))
+                    {
+                        CurrentState = BeeState.ReturningToHive;
+                    }
+                    else if(InsideHive)
+                    {
+                        if(MoveTowardsLocation(_hive.GetLocation(Resources.Exit)))
+                        {
+                            InsideHive = false;
+                            _location = _hive.GetLocation(Resources.Entrance);
+                        }
+                    }
+                    else if(MoveTowardsLocation(destinationFlower.Location))
+                    {
+                        CurrentState = BeeState.GatheringNectar;
+                    }
+
                     break;
 
                 case BeeState.GatheringNectar:

@@ -74,6 +74,7 @@ namespace BeehiveSimulator
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(95, 22);
             this.StartButton.Text = "Start Simulation";
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // ResetButton
             // 
@@ -83,6 +84,7 @@ namespace BeehiveSimulator
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(39, 22);
             this.ResetButton.Text = "Reset";
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // statusStrip1
             // 
@@ -97,8 +99,8 @@ namespace BeehiveSimulator
             // StatusLabel
             // 
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(67, 17);
-            this.StatusLabel.Text = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(91, 17);
+            this.StatusLabel.Text = "Start Simulation";
             // 
             // tableLayoutPanel1
             // 
@@ -238,7 +240,7 @@ namespace BeehiveSimulator
             this.LblFrameRate2.TabIndex = 11;
             this.LblFrameRate2.Text = "Frame Rate";
             // 
-            // Form1
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -248,7 +250,7 @@ namespace BeehiveSimulator
             this.Controls.Add(this.toolStrip1);
             this.MaximumSize = new System.Drawing.Size(390, 243);
             this.MinimumSize = new System.Drawing.Size(390, 243);
-            this.Name = "Form1";
+            this.Name = "Dashboard";
             this.Text = "Beehive Simulator";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

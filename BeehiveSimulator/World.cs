@@ -67,7 +67,8 @@ namespace BeehiveSimulator
         private void AddFlower(Random random)
         {
             var location = new Point(random.Next(FieldMinX, FieldMaxY), random.Next(FieldMinY, FieldMaxY));
-            var newflower = new Flower(location, random); 
+            var newflower = new Flower(location, random);
+            Flowers.Add(newflower);
         }
     }
 }
